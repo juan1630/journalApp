@@ -6,7 +6,7 @@ export const AppRouter = () => {
     return (
 
         <Router>
-            <div>           
+    
                 <Switch>
                     <Route 
                         path="/auth"  
@@ -17,7 +17,7 @@ export const AppRouter = () => {
                             component={ JournalScreen } 
                             />
                 </Switch> 
-            </div>
+    
         </Router>
     )
 }

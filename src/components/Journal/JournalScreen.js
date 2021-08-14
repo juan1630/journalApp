@@ -3,6 +3,8 @@ import { AppRouter } from '../../routers/AppRouter';
 
 export const JournalScreen = () => {
     return (
-        <AppRouter/>
+        <div>
+          <h2> Hola mundo </h2>
+        </div>
     )
 }

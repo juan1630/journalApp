@@ -1,10 +1,18 @@
 import React from 'react';
-import { AppRouter } from '../../routers/AppRouter';
+import { Sidebar } from './Sidebar'
 
 export const JournalScreen = () => {
     return (
-        <div>
-          <h2> Hola mundo </h2>
+        <div  className="journal__screen-main-content"  >
+        
+                <Sidebar />
+
+
+                <main>
+
+                        <h1> Main content </h1>
+                </main>
+        
         </div>
     )
 }

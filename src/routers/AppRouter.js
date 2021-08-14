@@ -6,7 +6,7 @@ import { JournalScreen} from '../components/Journal/JournalScreen';
 export const AppRouter = () => {
     return (
 
-        <diV>
+        <div>
             <Router>
                 <Switch>
                     <Route 
@@ -20,6 +20,6 @@ export const AppRouter = () => {
                 </Switch> 
 
             </Router>
-        </diV>
+        </div>
     )
 }

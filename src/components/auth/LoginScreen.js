@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useForm } from '../../hooks/useForm';
 import { useDispatch } from 'react-redux';
-import { login } from '../../actions/auth';
+import { login, loginWithEmailYPassword, startGoogleLgoin } from '../../actions/auth';
 
 
 export const LoginScreen = () => {
@@ -21,9 +21,13 @@ export const LoginScreen = () => {
 
     const { email, password } = formValues;
 
+    const handleLoginGoogle = () => {
+        dispatch( startGoogleLgoin() );
+    }
+
     const handleLogin = (e) => {
         e.preventDefault();
-        dispatch( login(123456, 'Juan') )
+        dispatch( loginWithEmailYPassword( email, password ) );
     }
 
     return (
@@ -55,6 +59,7 @@ export const LoginScreen = () => {
                     <p>Login with social networks</p>
                     <div 
                         className="google-btn"
+                        onClick={ handleLoginGoogle }
                     >
                         <div className="google-icon-wrapper">
                             <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />

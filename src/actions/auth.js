@@ -6,9 +6,11 @@ export const loginWithEmailYPassword = (email, password) => {
     
     // esta funcion retorna un callback
     return (dispatch) => {
-        setTimeout(() =>{
-            dispatch( login( 123456, 'Juanito' ) )
-        }, 3500);
+        firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(({user}) => {
+
+            dispatch( login( user.uid, user.displayName ) );
+        });
     }
 }
 
@@ -22,6 +24,21 @@ export const startGoogleLgoin = () => {
 
             dispatch( login( user.uid, user.displayName ));
         })
+        .catch( (err) => console.error( err));
+    }
+}
+
+
+export const starRegisterWithEmailPasswordEmail = (name, email, password) => {
+
+    return (dispatch) => {
+         firebase.auth().createUserWithEmailAndPassword(email, password)
+         .then(  async ({user}) => {
+            // actualizamos el displayName porque viene en nulo cuando se hace el registro
+          await  user.updateProfile({displayName: name})
+                dispatch( login( user.uid, user.displayName) );
+         })
+         .catch( error  => console.error(error))
     }
 }
 

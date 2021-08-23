@@ -40,12 +40,14 @@ export const LoginScreen = () => {
                         placeholder="Email" 
                         name="email" autoComplete="off"
                         value= { email}
+                        onChange={ handleInputChange }
                         />
 
                 <input type="password" className="auth__input" 
                         placeholder="Password" 
                         name="pass"
                         value={ password }
+                        onChange={ handleInputChange }
                         />
                 
                 <button

@@ -3,14 +3,16 @@ import {  Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import validator from 'validator';
 
-import { useDispatch, useSelector } from '../../hooks/useDispatchreact-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setError, removeError } from '../../actions/ui'
+import { starRegisterWithEmailPasswordEmail } from '../../actions/auth';
 
 export const RegisterScreen = () => {
 
 
     const dispatch = useDispatch();
-    const state = useSelector()
+    const { msgError  } = useSelector( state => state.ui );
+
 
     const [ formValues, handleInputChange] = useForm({
             
@@ -28,7 +30,8 @@ export const RegisterScreen = () => {
         e.preventDefault();
         
         if( isFormValid() ){
-            console.log('Formulario valido');
+            console.log(email);
+            dispatch( starRegisterWithEmailPasswordEmail(nameUser, email, password))
         }
         
     }
@@ -58,9 +61,13 @@ export const RegisterScreen = () => {
         <div>
             <h3 className="auth__title"> Register </h3>
 
-                <div className="auth__alert-error" >
-                        Hola mundo
+               {
+                   msgError && (
+                    <div className="auth__alert-error" >
+                        { msgError}
                 </div>
+                   )
+                }
 
             <form  onSubmit={handleRegister}  >
 

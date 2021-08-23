@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useForm } from '../../hooks/useForm';
-import { useDispatch } from 'react-redux';
 import { login, loginWithEmailYPassword, startGoogleLgoin } from '../../actions/auth';
 
 
@@ -10,7 +10,7 @@ export const LoginScreen = () => {
 
     // usamos el dispatch de react redux
      const dispatch = useDispatch();
-
+    const { loading } = useSelector( state=> state.ui)
     // hace uso del hook useform
     const [ formValues, handleInputChange ] = useForm({
 
@@ -53,6 +53,7 @@ export const LoginScreen = () => {
                 <button
                     className="btn btn-primary btn-block"
                     type="submit"
+                    disabled={  loading }
                 >
                     Login
                 </button>

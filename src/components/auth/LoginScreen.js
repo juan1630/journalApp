@@ -9,12 +9,14 @@ import { login, loginWithEmailYPassword, startGoogleLgoin } from '../../actions/
 export const LoginScreen = () => {
 
     // usamos el dispatch de react redux
-     const dispatch = useDispatch();
+
+
+    const dispatch = useDispatch();
     const { loading } = useSelector( state=> state.ui)
     // hace uso del hook useform
     const [ formValues, handleInputChange ] = useForm({
 
-        email: 'Juan@gmail.com',
+        email: 'juan1630@gmail.com',
         password: '123456'
     });
 

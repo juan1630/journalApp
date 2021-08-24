@@ -40,6 +40,7 @@ export const starRegisterWithEmailPasswordEmail = (name, email, password) => {
     return (dispatch) => {
          firebase.auth().createUserWithEmailAndPassword(email, password)
          .then(  async ({user}) => {
+
             // actualizamos el displayName porque viene en nulo cuando se hace el registro
           await  user.updateProfile({displayName: name})
                 dispatch( login( user.uid, user.displayName) );
@@ -51,9 +52,24 @@ export const starRegisterWithEmailPasswordEmail = (name, email, password) => {
 
 export const login = (uid, displayName) =>  ({
         type: types.loggin,
-     
         payload: {
             uid,
             displayName,
         }
 });
+
+
+export const startLogout = () => {
+    return async (dispatch) => {
+        // esta funcion regresa una promesa
+        await firebase.auth().signOut();
+
+        dispatch(logOut());
+    }
+}
+
+
+
+export const logOut = () =>({
+    type: types.logout
+})

@@ -1,9 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NoteScreen } from '../notes/NoteScreen';
-//import { NothingSelected } from './NothingSelected';
-import { Sidebar } from './Sidebar'
+
+import { Sidebar } from './Sidebar';
+import { NothingSelected } from './NothingSelected'
 
 export const JournalScreen = () => {
+
+    // el hook de useSelector nos tare toda la iformacion del state de redux
+    const {active} = useSelector (state => state.notes)
+
     return (
         <div  className="journal__screen-main-content"  >
         
@@ -11,12 +17,9 @@ export const JournalScreen = () => {
 
 
                 <main>
-                    <NoteScreen />
-
-                   {/*
-                    <NothingSelected />
-                   
-                   */}
+                    {    (active) ? (<NoteScreen />) : ( <NothingSelected />) 
+                    
+                }
                 
                 </main>
         

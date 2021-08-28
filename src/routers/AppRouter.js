@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch,  BrowserRouter as Router } from 'react-router-dom';
 import { AuthRouter } from './AuthRouter';
 import { JournalScreen} from '../components/Journal/JournalScreen';
 import { useEffect } from 'react';
 
 import  { firebase } from '../firebase/firebase-config';
 
-import  { useDispatch } from 'react-redux'
+import { PrivatesRoutes } from './PrivatesRoutes'
+import  { useDispatch } from 'react-redux';
 import { login } from '../actions/auth';
+import PublicRoutes from './PublicRoute';
 
 export const AppRouter = () => {
     
@@ -45,11 +47,14 @@ export const AppRouter = () => {
         <div>
             <Router>
                 <Switch>
-                    <Route 
-                        path="/auth"  
+
+                    <PublicRoutes 
+                        path="/auth" 
+                        isAuthenticated={ isLoggedIn }
                         component={ AuthRouter} />
 
-                    <Route path="/" 
+                    <PrivatesRoutes path="/"
+                            isAuthenticated={ isLoggedIn }
                             exact  
                             component={ JournalScreen } 
                             />

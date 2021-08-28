@@ -10,13 +10,13 @@ export const uiReducer = ( state = initialState,  action ) => {
 
         case types.uiSetError:
             return {
-                ... state,
+                ...state,
                 msgError: action.payload,
             }
 
         case types.uiRemoveError:
             return {
-                ... state,
+                ...state,
                 msgError: null,
             }
 

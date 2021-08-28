@@ -21,7 +21,7 @@ export const NoteScreen = () => {
                 </textarea>
             </div>
             <div  className="notes__image" >
-                <img src="http://2.bp.blogspot.com/-JanvBHsi2p4/VUSYPnvG9DI/AAAAAAAAFxk/jCixiE0gtJQ/s1600/silicon-valley-segunda-temporada-online.jpg" />
+                <img src="http://2.bp.blogspot.com/-JanvBHsi2p4/VUSYPnvG9DI/AAAAAAAAFxk/jCixiE0gtJQ/s1600/silicon-valley-segunda-temporada-online.jpg" alt="an im" />
             </div>
         </div>
     )

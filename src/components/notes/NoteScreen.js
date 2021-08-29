@@ -5,6 +5,7 @@ import { NoteAppBar } from './NoteAppBar';
 export const NoteScreen = () => {
     return (
         <div  className="note-screen-content">
+            
             <NoteAppBar />
 
             <div className="notes__content" >

@@ -9,10 +9,10 @@ import  { firebase } from '../firebase/firebase-config';
 import { PrivatesRoutes } from './PrivatesRoutes'
 import  { useDispatch } from 'react-redux';
 import { login } from '../actions/auth';
+import { startLoadNotes } from '../actions/notes'
 
 import PublicRoutes  from './PublicRoute';
-import { loadNotes } from '../helpers/loadNotes';
-import { setNotes } from '../actions/notes'
+
 
 export const AppRouter = () => {
     
@@ -32,8 +32,7 @@ export const AppRouter = () => {
                 dispatch( login(user.uid, user.displayName));
                 setIsLoggedIn( true );
 
-               const notes = await loadNotes(  user.uid );
-                dispatch( setNotes( notes));
+                dispatch( startLoadNotes ( user.uid ) );
             
             }else {
                 setChecking(false);

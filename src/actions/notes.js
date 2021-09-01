@@ -58,3 +58,25 @@ export const setNotes = ( notes ) => ({
 })
 
 
+export const startSavedNote = (note) => {
+    
+    return async (dispatch, getState) => {
+
+        console.log(note);
+
+        const { uid } = getState().auth;
+
+
+        if(!note.url ) {
+            delete note.url;
+            // borramos esta propiedad del json
+            delete note.date;
+        }   
+        console.log( note );
+        const noteToFirestore = { ...note }
+        // eliminamos el id del body
+        delete noteToFirestore.id;
+
+        await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore);
+    }
+}

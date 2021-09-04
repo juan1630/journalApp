@@ -64,7 +64,7 @@ export const NoteScreen = () => {
                 {
                     (note.url) && 
                     (   <div  className="notes__image" >
-                            <img src="http://2.bp.blogspot.com/-JanvBHsi2p4/VUSYPnvG9DI/AAAAAAAAFxk/jCixiE0gtJQ/s1600/silicon-valley-segunda-temporada-online.jpg" alt="an im" />
+                            <img src={note.url} alt="an im" />
                         </div>
                     )
                 }

@@ -30,7 +30,7 @@ export const JournalEntry = ({id, title, body, url, date }) => {
             className="journal__entry-picture"
             style={{
                 backgroundSize: 'cover',
-                backgroundImage: 'url(https://media.comicbook.com/2020/12/attack-on-titan-season-four-1249758-1280x0.jpeg)'
+                backgroundImage: url
             }}
              > </div>
              

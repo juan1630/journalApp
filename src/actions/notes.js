@@ -75,10 +75,13 @@ export const startSavedNote = (note) => {
             // borramos esta propiedad del json
             delete note.date;
         }   
-        console.log( note );
         const noteToFirestore = { ...note }
+        console.log(noteToFirestore)
+        
         // eliminamos el id del body
         delete noteToFirestore.id;
+        delete noteToFirestore.date;
+
 
         await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore);
 
@@ -109,6 +112,21 @@ export const startFileUpload  = (file) => {
         const { active: activeNotes } = getState().notes;
         // console.log(file, activeNotes)
         const fileUrl = await fileUploas(file);
-        console.log( fileUrl ); 
+        // console.log( fileUrl );
+        Swal.fire({
+            title: 'Uploading',
+            text: 'Please upload',
+            allowOutsideClick: false,
+            onBeforeUpload: () =>{
+                Swal.showLoading();
+            }
+        });
+
+        activeNotes.url = fileUrl;
+        Swal.close();
+
+
+        dispatch( startSavedNote(activeNotes) )
+
     }
 }

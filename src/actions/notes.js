@@ -26,7 +26,7 @@ export const startNewNote = ( ) => {
 
         // hacemos el dispartch de la funcio ativatesNotes que se encuntra abajo
         dispatch( activeNotes( docRef.id, newNote ) );
-
+        dispatch(  addNewNote(docRef.id, newNote) );
     }
 }
 
@@ -40,7 +40,12 @@ export const activeNotes = (id, note) => ({
         ...note
     }
 });
-
+ export const addNewNote = (id, note) => ({
+     type:types.notesAddNew,
+     payload : {
+        id, ...note
+     }
+ })
 
 export const startLoadNotes = ( uid ) => {
 
@@ -148,6 +153,11 @@ export const startDeleting = (id) => {
 export const deleteNote = (id) => ({
     type: types.notesDelete,
     payload: id
-})
+});
 
 
+export const noteLogout = () => ({
+
+    type: types.notesLogoutCleaning,
+
+});

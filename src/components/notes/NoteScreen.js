@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { NoteAppBar } from './NoteAppBar';
 import { useForm } from '../../hooks/useForm';
-import { activeNotes } from '../../actions/notes';
+import { activeNotes, startDeleting } from '../../actions/notes';
 // import { useRef } from 'react';
 
 export const NoteScreen = () => {
 
         const { active: note } = useSelector(state => state.notes);
+
         const dispatch = useDispatch();
         // Renombemos la varibale por note
         
@@ -34,7 +35,11 @@ export const NoteScreen = () => {
             dispatch( activeNotes(formValues.id, {
                 ...formValues,
             }) )
-         }, [formValues])
+         }, [formValues, dispatch]);
+
+         const handleDelete = () => {
+             dispatch(  startDeleting( note.id) )
+         }
 
     return (
         <div  className="note-screen-content">
@@ -68,6 +73,14 @@ export const NoteScreen = () => {
                         </div>
                     )
                 }
+
+
+        <button 
+            className="btn btn-danger"
+            onClick={ handleDelete }
+            > 
+            Delete  
+        </button>
 
         </div>
     )

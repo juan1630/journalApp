@@ -18,15 +18,17 @@ export const fileUploas =  async (file) => {
             method : 'POST',
             body: formData,
         });
-
+        
 
         if( resp.ok ) {
             // convertimos a json la respuesta
             const cloudResp = await resp.json();
             // retornamos el url para actualizarlos en firebase
             return cloudResp.secure_url;
+
         }else {
-            throw await resp.json();
+            // throw await resp.json();
+            return null
         }
 
     } catch (error) {

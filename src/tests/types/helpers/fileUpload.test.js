@@ -1,4 +1,17 @@
+
+import  cloudinary from 'cloudinary';
+
 import { fileUploas } from "../../../helpers/fileUpload";
+
+
+
+cloudinary.config({ 
+    cloud_name: 'sample', 
+    api_key: '846329145778116', 
+    api_secret: 'BCsMaUzwHAw0TYxS1GSpujj2j0g',
+    secure: true
+  });
+
 
 describe('Pruebas en el fileupload', () => {
     
@@ -16,6 +29,16 @@ describe('Pruebas en el fileupload', () => {
 
         expect( typeof url).toBe('string');
 
+        // borra la imagen por el id
+        const segments = url.split('/');
+        const imageId = segments[ segments.length - 1].replace('.jpg', '');
+        
+         cloudinary.v2.api.delete_resources( imageId , {},()=> {
+            //  console.log('Consulta jejej');
+            //  done();
+        }, 20000);
+
+        
     });
 
     test('Debe de retornar un error', async () => {

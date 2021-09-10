@@ -47,7 +47,7 @@ describe('Pruebas en el fileupload', () => {
         const file = new File([], 'foto.jpg');
         // console.log(file);
         const url = await fileUploas(file);
-         console.log(url)
+        //  console.log(url)
 
         expect( url).toBe(null);
 

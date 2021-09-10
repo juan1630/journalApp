@@ -1,7 +1,7 @@
 
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk'; 
-import {startNewNote } from '../../../actions/notes' 
+import {startNewNote, startLoadNotes } from '../../../actions/notes' 
 import { db } from '../../../firebase/firebase-config';
 import { types } from '../../../types/types';
 
@@ -11,7 +11,7 @@ const mockStore = configureStore(middlewares);
 
 const store = mockStore({
     auth: {
-        ui: "TEST"
+        uid: "TEST"
     }
 })
 
@@ -47,7 +47,18 @@ describe('Pruebas en el notes actions' , ( ) => {
         const docId = actions[0].payload.id;
 
         // borramos de la db el nuevo registro que se creo
-        await db.doc(`undefined/journal/notes/${docId}`).delete();
+        await db.doc(`TEST/journal/notes/${docId}`).delete();
 
    });
+
+   test('Debe de cargar las notes con el startNewNotes', async () => {
+
+    await store.dispatch( startLoadNotes('TEST') );
+
+    const actions = store.getActions();
+
+    console.log( actions);
+
+   });
+
 });

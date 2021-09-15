@@ -19,7 +19,6 @@ export const loadNotes =  async ( uid ) => {
         // console.log( snapHijo.data() );
     });
 
-    console.log( notes );
     return notes;
 }
 

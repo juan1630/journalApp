@@ -70,8 +70,6 @@ export const startSavedNote = (note) => {
     
     return async (dispatch, getState) => {
 
-        console.log(note);
-
         const { uid } = getState().auth;
 
 
@@ -81,7 +79,7 @@ export const startSavedNote = (note) => {
             delete note.date;
         }   
         const noteToFirestore = { ...note }
-        console.log(noteToFirestore)
+        // console.log(noteToFirestore)
         
         // eliminamos el id del body
         delete noteToFirestore.id;

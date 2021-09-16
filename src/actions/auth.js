@@ -58,6 +58,20 @@ export const starRegisterWithEmailPasswordEmail = (name, email, password) => {
 }
 
 
+
+
+export const startLogout = () => {
+    return async (dispatch) => {
+        // esta funcion regresa una promesa
+        await firebase.auth().signOut();
+        
+        dispatch(logOut());
+        dispatch( noteLogout() );
+    }
+}
+
+
+
 export const login = (uid, displayName) =>  ({
         type: types.loggin,
         payload: {
@@ -65,19 +79,6 @@ export const login = (uid, displayName) =>  ({
             displayName,
         }
 });
-
-
-export const startLogout = () => {
-    return async (dispatch) => {
-        // esta funcion regresa una promesa
-        await firebase.auth().signOut();
-
-        dispatch(logOut());
-        dispatch( noteLogout() );
-    }
-}
-
-
 
 export const logOut = () =>({
     type: types.logout

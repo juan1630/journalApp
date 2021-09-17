@@ -1,3 +1,4 @@
+// imports de otras despencias 
 import Swal from 'sweetalert2';
 
 import { types } from "../types/types";
@@ -11,8 +12,9 @@ export const loginWithEmailYPassword = (email, password) => {
     // esta funcion retorna un callback
     return (dispatch) => {
 
-            dispatch( startLoading() );
-        firebase.auth().signInWithEmailAndPassword(email, password)
+        dispatch( startLoading() );
+
+        return firebase.auth().signInWithEmailAndPassword(email, password)
         .then(({user}) => {
 
             dispatch( finishLoading() );

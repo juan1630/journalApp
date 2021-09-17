@@ -1,11 +1,12 @@
-
+// import de otras depencias 
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk'; 
+
 import {startNewNote, startLoadNotes, startSavedNote, startFileUpload } from '../../../actions/notes' 
 import { db } from '../../../firebase/firebase-config';
 import { types } from '../../../types/types';
 
-import { fileUploas } from '../../../helpers/fileUpload';
+// import { fileUploas } from '../../../helpers/fileUpload';
 
 
 const middlewares = [ thunk ];

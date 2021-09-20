@@ -24,6 +24,7 @@ export const LoginScreen = () => {
     const { email, password } = formValues;
 
     const handleLoginGoogle = () => {
+        // console.log('Heyy!!')
         dispatch( startGoogleLgoin() );
     }
 
@@ -41,14 +42,16 @@ export const LoginScreen = () => {
                 className="animate__animated animate__fadeIn"
                 >
 
-                <input type="text"  className="auth__input" 
+                <input type="text"  
+                        className="auth__input" 
                         placeholder="Email" 
                         name="email" autoComplete="off"
                         value= { email}
                         onChange={ handleInputChange }
                         />
 
-                <input type="password" className="auth__input" 
+                <input type="password" 
+                        className="auth__input" 
                         placeholder="Password" 
                         name="pass"
                         value={ password }

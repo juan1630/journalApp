@@ -38,8 +38,8 @@ let store = mockStore(initState);
 store.dispatch = jest.fn();
 
 const wrapper = mount( 
+    
     <Provider  store={store} >
-
         <MemoryRouter>
             <LoginScreen/>
         </MemoryRouter>

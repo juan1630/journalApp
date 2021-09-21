@@ -26,6 +26,7 @@ const middlewares = [ thunk ];
 
 // mocks 
 const mockStore = configureStore(middlewares);
+
 const initState = {
     auth: {},
     ui: {
@@ -34,18 +35,22 @@ const initState = {
     }
 };
 
+
 let store = mockStore(initState);
 // store.dispatch = jest.fn();
 
+const wrapper = mount(
+    <Provider store={store} >
+        <MemoryRouter>
+            <RegisterScreen />
+        </MemoryRouter>
+    </Provider>
+);
+
+
+
 describe('Pruebas en el registerScreen', () => {
     
-        const wrapper = mount(
-            <Provider store={store} >
-                <MemoryRouter>
-                    <RegisterScreen />
-                </MemoryRouter>
-            </Provider>
-        );
 
     test('Debe de hacer match con el snapshot', () => {
 
@@ -78,7 +83,35 @@ describe('Pruebas en el registerScreen', () => {
         expect( actions[0]).toEqual({
             type: types.uiSetError,
             payload: 'Email is not validate'
-        })
+        });
+
+    });
+
+
+    test('Debe de mostrar la caja de alerta con el Error', () => {
+
+        const initState = {
+            auth: {},
+            ui: {
+                loading: false,
+                msgError: "El email no es correcto"
+            }
+        };
+        
+        
+        const store = mockStore(initState);
+        // store.dispatch = jest.fn();
+        
+        const wrapper = mount(
+            <Provider store={store} >
+                <MemoryRouter>
+                    <RegisterScreen />
+                </MemoryRouter>
+            </Provider>
+        );
+        
+            expect( wrapper.find('.auth__alert-error').exists() ).toBe( true );
+            expect( wrapper.find('.auth__alert-error').text() ).toBe( initState.ui.msgError );
 
     });
 
